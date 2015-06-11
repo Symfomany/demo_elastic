@@ -1,0 +1,289 @@
+curl -XPUT "http://localhost:9200/_river/post/_meta" -d '
+{
+  "type": "mongodb",
+  "mongodb": {
+     "servers": [
+       { "host": "127.0.0.1", "port": 27017 }
+     ],
+    "options": { "secondary_read_preference": true},
+    "db": "post",
+    "collection": "posts"
+  },
+ "index": {
+   "name": "post2",
+   "type": "posts2"
+ }
+}'
+
+
+{
+  "markers": [
+    {
+      "point": [
+        40.266044,
+        -74.718479
+      ],
+      "firstName": "John",
+      "lastName": "Smith",
+      "importance": 4,
+      "phoneNumber": "0674585648",
+      "age": 25,
+      "address":
+      {
+        "streetAddress": "21 2nd Street",
+        "city": "New York",
+        "state": "NY",
+        "postalCode": "10021"
+      },
+      "from": {
+        "name": "Paris", "id": "1"
+      },
+      "title": "Mon premier article sur Facebook",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris sed lorem vel nisl finibus interdum id at mauris. Nunc sed nunc libero. Proin neque risus, vestibulum quis arcu a, egestas dictum mauris",
+      "homeTeam": "Lawrence Library",
+      "awayTeam": "3WA",
+      "user": "Julien",
+      "markerImage": "images/red.png",
+      "information": "Linux users group meets second Wednesday of each month.",
+      "fixture": "Wednesday 7pm",
+      "actions": [
+        {
+          "name": "Comment",
+          "link": "http://www.facebook.com/X998/posts/Y998"
+        },
+        {
+          "name": "Like",
+          "link": "http://www.facebook.com/X998/posts/Y998"
+        }
+      ],
+      "tags": [
+        "La status de la Liberté",
+        "Twoer Bridge",
+        "Le pont de San Francisco"
+      ],
+      "thumbnail": {
+        "default": "http://i.ytimg.com/vi/hYB0mn5zh2c/default.jpg",
+        "hqDefault": "http://i.ytimg.com/vi/hYB0mn5zh2c/hqdefault.jpg"
+      },
+      "player": {
+        "default": "http://www.youtube.com/watch?vu003dhYB0mn5zh2c"
+      },
+      "content": {
+        "1": "rtsp://v5.cache3.c.youtube.com/CiILENy.../0/0/0/video.3gp",
+        "5": "http://www.youtube.com/v/hYB0mn5zh2c?f...",
+        "6": "rtsp://v1.cache1.c.youtube.com/CiILENy.../0/0/0/video.3gp"
+      },
+      "capacity": "",
+      "previousScore": "",
+      "type": "status",
+      "totalItems":800,
+      "rating": 4.63,
+      "ratingCount": 68,
+      "viewCount": 220101,
+      "favoriteCount": 201,
+      "commentCount": 22,
+      "created_time": "2010-08-02T21:27:44+0000",
+      "updated_time": "2010-08-02T21:27:44+0000"
+    },
+
+
+
+    {
+      "point": [
+        40.211600,
+        -74.695702
+      ],
+      "firstName": "Julien",
+      "lastName": "Boyer",
+      "phoneNumber": "0689195648",
+      "age": 27,
+      "importance": 3,
+      "address":
+      {
+        "streetAddress": "12 rue Mandar",
+        "city": "Paris",
+        "state": "FR",
+        "postalCode": "75002"
+      },
+      "title": "Mon second article sur Twitter",
+      "description": " Cras in nisi et massa ultrices egestas. Vivamus nunc lorem, luctus non bibendum a, fringilla at augue. Cras ultrices, magna et viverra aliquet, elit ante aliquam eros, quis cursus nibh lorem in sapien. ",
+      "homeTeam": "Hamilton Library",
+      "awayTeam": "Hetic",
+      "user": "Florent",
+      "markerImage": "images/white.png",
+      "information": "Linux users can meet the first Tuesday of the month to work out harward and configuration issues.",
+      "fixture": "Tuesday 7pm",
+      "from": {
+        "name": "Strasbourg", "id": "4"
+      },
+      "actions": [
+        {
+          "name": "Comment",
+          "link": "http://www.facebook.com/X999/posts/Y999"
+        },
+        {
+          "name": "Like",
+          "link": "http://www.facebook.com/X999/posts/Y999"
+        }
+      ],
+      "tags": [
+        "Vieux Port",
+        "Les Quartiers Nords",
+        "OM"
+      ],
+      "thumbnail": {
+        "default": "http://i.ytimg.com/vi/hYB0mn5zh2c/default.jpg",
+        "hqDefault": "http://i.ytimg.com/vi/hYB0mn5zh2c/hqdefault.jpg"
+      },
+      "player": {
+        "default": "http://www.youtube.com/watch?vu003dhYB0mn5zh2c"
+      },
+      "content": {
+        "1": "rtsp://v5.cache3.c.youtube.com/CiILENy.../0/0/0/video.3gp",
+        "5": "http://www.youtube.com/v/hYB0mn5zh2c?f...",
+        "6": "rtsp://v1.cache1.c.youtube.com/CiILENy.../0/0/0/video.3gp"
+      },
+      "status":{
+        "value":"enabled",
+        "reason":"full"
+      },
+      "capacity": "",
+      "tv": "",
+      "totalItems":1200,
+      "rating": 3.53,
+      "ratingCount": 73,
+      "viewCount": 220126,
+      "favoriteCount": 180,
+      "commentCount": 15,
+      "created_time": "2010-03-02T22:27:44+0000",
+      "updated_time": "2010-04-02T20:27:44+0000"
+    },
+
+
+    {
+      "point": [
+        40.294535,
+        -74.682012
+      ],
+      "firstName": "François",
+      "lastName": "Boyer",
+      "phoneNumber": "0726485648",
+      "age": 45,
+      "importance": 4,
+      "address":
+      {
+        "streetAddress": "14 rue Outrebon",
+        "city": "Paris",
+        "state": "FR",
+        "postalCode": "93250"
+      },
+      "title": "Mon troisième article sur Youtube",
+      "from": {
+        "name": "Marseille", "id": "3"
+      },
+
+      "description": "Sed in nunc egestas augue tincidunt tincidunt ut ut mauris. Fusce eu rhoncus sapien, blandit sollicitudin dui. Nam in euismod urna. Nulla eget pulvinar elit. Praesent nisi nunc, tristique a eleifend nec, mattis vitae ante. ",
+      "homeTeam": "Applebees",
+      "awayTeam": "Polytech",
+      "user": "Maeva",
+      "markerImage": "images/newcastle.png",
+      "information": "Some of us go there after the main LUGip meeting, drink brews, and talk.",
+      "fixture": "Wednesday whenever",
+      "tags": [
+        "Châtelet",
+        "Odéon",
+        "Montparnasse",
+        "La Tour Effel"
+      ],
+      "thumbnail": {
+        "default": "http://i.ytimg.com/vi/hYB0mn5zh2c/default.jpg",
+        "hqDefault": "http://i.ytimg.com/vi/hYB0mn5zh2c/hqdefault.jpg"
+      },
+      "player": {
+        "default": "http://www.youtube.com/watch?vu003dhYB0mn5zh2c"
+      },
+      "content": {
+        "1": "rtsp://v5.cache3.c.youtube.com/CiILENy.../0/0/0/video.3gp",
+        "5": "http://www.youtube.com/v/hYB0mn5zh2c?f...",
+        "6": "rtsp://v1.cache1.c.youtube.com/CiILENy.../0/0/0/video.3gp"
+      },
+      "status":{
+        "value":"enabled",
+        "reason":"full"
+      },
+      "capacity": "2 to 4 pints",
+      "tv": "",
+      "totalItems":400,
+      "rating": 2.5,
+      "ratingCount": 72,
+      "viewCount": 21001,
+      "favoriteCount": 185,
+      "commentCount": 15,
+      "created_time": "2010-03-02T22:27:44+0000",
+      "updated_time": "2010-04-02T20:27:44+0000"
+    },
+
+
+
+    {
+      "point": [
+        40.294535,
+        -74.682012
+      ],
+      "firstName": "Antoine",
+      "lastName": "Boyer",
+      "age": 45,
+      "importance": 2,
+      "phoneNumber": "0623145622",
+      "address":
+      {
+        "streetAddress": "21 rue de la Rivoire",
+        "city": "Lyon",
+        "state": "FR",
+        "postalCode": "38080"
+      },
+      "title": "Mon quatrième article sur Google",
+      "description": "Praesent nec ornare tellus. Phasellus sed nunc eget nisi tempus volutpat sit amet at ipsum. Mauris cursus, felis vitae vehicula pharetra, dolor justo dictum dolor, non finibus ex risus in massa",
+      "from": {
+        "name": "Bordeaux", "id": "4"
+      },
+      "homeTeam": "Applebees",
+      "awayTeam": "After LUPip Mtg Spot",
+      "user": "Hélène",
+      "markerImage": "images/newcastle.png",
+      "information": "Some of us go there after the main LUGip meeting, drink brews, and talk.",
+      "fixture": "Wednesday whenever",
+      "totalItems": 250,
+      "rating": 4.5,
+      "ratingCount": 42,
+      "viewCount": 15001,
+      "favoriteCount": 115,
+      "commentCount": 10,
+      "status":{
+        "value":"restricted",
+        "reason":"limitedSyndication"
+      },
+      "tags": [
+        "Lyon",
+        "Bellecour",
+        "Vieux-Lyon"
+      ],
+      "thumbnail": {
+        "default": "http://i.ytimg.com/vi/hYB0mn5zh2c/default.jpg",
+        "hqDefault": "http://i.ytimg.com/vi/hYB0mn5zh2c/hqdefault.jpg"
+      },
+      "player": {
+        "default": "http://www.youtube.com/watch?vu003dhYB0mn5zh2c"
+      },
+      "content": {
+        "1": "rtsp://v5.cache3.c.youtube.com/CiILENy.../0/0/0/video.3gp",
+        "5": "http://www.youtube.com/v/hYB0mn5zh2c?f...",
+        "6": "rtsp://v1.cache1.c.youtube.com/CiILENy.../0/0/0/video.3gp"
+      },
+      "capacity": "2 to 4 pints",
+      "tv": "",
+      "created_time": "2010-05-02T22:27:44+0000",
+      "updated_time": "2010-06-02T22:27:44+0000"
+    }
+  ]
+}

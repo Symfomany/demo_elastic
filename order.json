@@ -1,0 +1,382 @@
+curl -XPUT 'http://localhost:9200/contacts' -d '{
+    "user" : "juju",
+    "post_date" : "2009-11-15T14:12:12",
+    "message" : "trying out Elasticsearch"
+}'
+
+curl -XPUT 'http://localhost:9200/demo/contacts/5/_create' -d '{
+    "user" : "lala",
+    "post_date" : "2009-11-15T14:12:12",
+    "message" : "trying out PHP"
+}'
+
+curl -XPOST 'http://localhost:9200/demo/contacts/' -d '{
+    "user" : "test",
+    "post_date" : "2009-11-15T14:12:12",
+    "message" : "trying out JAVA"
+}'
+
+http://127.0.0.1:9200/demo/contacts/
+XGET _search/?size=1000&pretty=1{
+   "query": {
+          "match_all": ""
+   }
+}
+GET _search/?size=1000&pretty=1{
+   "query": {
+          "match_all": ""
+   }
+}
+
+//The API also allows to check for the existence of a document using HEAD, for example:
+curl -XHEAD -i 'http://localhost:9200/demo/contacts/1'
+
+curl 'localhost:9200/_cat/indices?v'
+
+curl http://localhost:9200/demo/contacts/_search?pretty=true&q=*:*
+
+
+//options
+curl -XGET 'http://localhost:9200/demo/contacts/1?_source=false'
+
+curl -XGET 'http://localhost:9200/demo/contacts/1?_source_include=*.id&_source_exclude=entities&pretty=true'
+
+curl -XGET 'http://localhost:9200/demo/contacts/1?fields=user'
+
+curl -XGET 'http://localhost:9200/demo/contacts/2?fields=user&pretty=true'
+
+curl -XGET 'http://localhost:9200/demo/contacts/2?fields=user,message&pretty=true'
+
+curl -XDELETE 'http://localhost:9200/demo/contacts/1'
+
+DELETE /demo/contacts/AU3PXPexBpDz8AzagHM-
+
+
+POST /demo/contacts
+{
+   "title": "My First Apps in Python",
+   "category": ["Python", "Tutoriel", "PHP"],
+   "contact": {
+    "subtitle": "My zero Apps",
+    "subdescription": "blabla"
+   },
+   "duration": 15156,
+   "visible": true,
+   "note": 12.5
+   
+}
+POST  /demo/contacts/_search?pretty=true 
+{
+    "query": {
+        "match_all": {}
+    }
+    
+}
+
+
+
+POST  /demo/contacts/_search?pretty=true 
+{
+    "query": {
+               "match_all": {}
+    }
+    
+}
+
+POST  /demo/contacts/_search?pretty=true 
+{
+    "query": {
+        "query_string": {
+            "query": "PHP",
+            "fields": [
+               "category"
+            ]
+        }
+    }
+    
+}
+
+POST  /demo/contacts/_search?pretty=true 
+{
+    "query": {
+        "query_string": {
+            "query": "PHP"
+        }
+    }
+    
+}
+
+POST  /demo/contacts/_search?pretty=true 
+{
+    "query": {
+        "match": {
+            "email": "juien@meetserious.com"
+        }
+    }
+}
+
+POST  /demo/contacts/_search?pretty=true 
+{
+    "query": {
+        "query_string": {
+            "query": "category:Python"
+        }
+    }
+    
+}
+POST  /demo/contacts/_search?pretty=true 
+{
+    "query": {
+        "query_string": {
+            "query": "category:Python AND tags:Nosql"
+        }
+    }
+    
+}
+
+POST  /demo/contacts/_search?pretty=true 
+{
+    "query": {
+        "query_string": {
+            "query": "app~"
+        }
+    }
+    
+}
+
+//Fuzzy
+POST  /demo/contacts/_search?pretty=true 
+{
+    "query": {
+        "query_string": {
+            "query": "Pyton~"
+        }
+    }
+    
+}
+
+//Ordres respecter
+POST  /demo/contacts/_search?pretty=true 
+{
+    "query": {
+        "query_string": {
+            "query": "\"Apps First\""
+        }
+    }
+    
+}
+
+POST  /demo/contacts/_search?pretty=true 
+{
+    "query": {
+        
+            "filtered": {
+                "query":{
+                     "query_string": {
+                            "query": "First"
+                        }
+                },
+                
+                "filter": {
+                    "range": {
+                       "duration": {
+                          "gte": 60
+                          }
+                    }
+                }
+            }
+            
+        }
+       
+    
+}
+
+//  pagination
+
+POST  /demo/contacts/_search?pretty=true 
+{
+   "query": {
+    "match_all": {}
+   },
+   "from": 0,
+   "size": 2
+}
+
+//compter
+
+POST  /demo/contacts/_count?pretty=true 
+{
+   "query": {
+    "match_all": {}
+   }
+}
+
+//ordre
+
+POST  /demo/contacts/_search?pretty=true 
+{
+   "query": {
+    "match_phrase": {
+       "title": "Apps in Python"
+    }
+   }
+}
+
+
+
+
+
+GET  /demo/contacts/_search?pretty=true&q=*:*
+
+
+{
+    "tweet" : {
+        "properties" : {
+            "person" : {
+                "type" : "object",
+                "properties" : {
+                    "name" : {
+                        "type" : "object",
+                        "properties" : {
+                            "first_name" : {"type" : "string"},
+                            "last_name" : {"type" : "string"}
+                        }
+                    },
+                    "sid" : {"type" : "string", "index" : "not_analyzed"}
+                }
+            },
+            "message" : {"type" : "string"}
+        }
+    }
+}
+
+
+curl -XPOST http://localhost:9200/demo/contacts/ -d 
+'{"tweet" : {"message" : "some arrays in this tweet...","tags" : ["elasticsearch", "wow"],"lists" : [
+            {
+                "name" : "prog_list",
+                "description" : "programming list"
+            },
+            {
+                "name" : "cool_list",
+                "description" : "cool stuff list"
+            }
+        ]
+    }
+}'
+
+
+
+
+POST  /demo/contacts/_search?pretty=true 
+{
+   "query": {
+        "bool": {
+            "must": [
+               {"query_string": {
+                  "query": "Python"
+               }}
+            ],
+            "should": [
+               {
+                   "query_string": {
+                      "query": "Mysql"
+                   }
+               },
+               {
+                   "match_phrase": {
+                      "category": "PHP"
+
+                   }
+               },
+               {
+                    "fuzzy_like_this": {
+                        "fields": ["title"],
+                        "like_text": "Pithon", 
+                        "max_query_terms": 2,
+                        "boost": 0.5
+                    }   
+               }
+            ]
+        }
+   }
+}
+
+
+curl -XPOST "http://localhost:9200/grafikart/tutoriels/_search" -d'
+{
+    "query": {
+        "bool": {
+            "should": [{
+                "query_string": {
+                   "query": "Data api",
+                   "fields": ["title"]
+                }
+            },{
+                "fuzzy_like_this": {
+                   "fields": ["title"],
+                   "like_text": "Data api",
+                   "max_query_terms": 5,
+                   "boost": 0.5
+                }
+            }]
+        }
+    },
+    "rescore": {
+        "window_size": 50,
+        "query": {
+            "rescore_query": {
+                "match_phrase": {
+                    "title": "Data api"
+                }
+            }   
+        }
+    }
+}'
+
+
+{
+    "order": {
+        "properties": {
+            "id": {
+                "type": "string",
+                "store": "yes",
+                "index": "not_analyzed"
+            },
+
+            "date": {
+                "type": "date",
+                "store": "no",
+                "index": "not_analyzed"
+            },
+
+            "customer_id": {
+                "type": "string",
+                "store": "yes",
+                "index": "not_analyzed"
+            },
+
+            "sent": {
+                "type": "boolean",
+                "index": "not_analyzed"
+            },
+
+            "name": {
+                "type": "string",
+                "index": "analyzed"
+            },
+
+            "quantity": {
+                "type": "integer",
+                "index": "not_analyzed"
+            },
+
+            "vat": {
+                "type": "double",
+                "index": "no"
+            }
+        }
+    }
+
+
+}

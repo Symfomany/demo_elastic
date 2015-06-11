@@ -1,0 +1,656 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Search Videos</title>
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+    <meta name="author" content="nileforest">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+    <!--[if IE]><meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'><![endif]-->
+
+    <!-- Favicone Icon -->
+    <link rel="shortcut icon" type="image/x-icon" href="img/favicon.ico">
+    <link rel="icon" type="image/png" href="img/favicon.png">
+    <link rel="apple-touch-icon" href="img/favicon.png">
+
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
+    <!-- CSS -->
+    <link href="{{ asset('css/style.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('css/bootstrap.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('css/font-awesome.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('css/ionicons.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('css/plugin/jPushMenu.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('css/plugin/animate.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('css/jquery-ui.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('css//plugin/YTPlayer.css') }}" rel="stylesheet" type="text/css" />
+
+</head>
+
+<body class="full-intro background--dark">
+
+<!-- Preloader -->
+<section id="preloader">
+    <div class="loader" id="loader">
+        <div class="loader-img"></div>
+    </div>
+</section>
+<!-- End Preloader -->
+
+<!-- Sidemenu -->
+<section class="side-menu cbp-spmenu cbp-spmenu-vertical cbp-spmenu-right">
+    <a class="menu-close toggle-menu menu-right push-body"><i class="ion ion-android-close"></i></a>
+    <h5 class="white">Sign In</h5>
+    <div class="sign-in">
+        <input class="input-sm form-full" type="email" aria-required="true" id="email" name="email" placeholder="Email" value="" />
+        <input class="input-sm form-full" type="password" aria-required="true" id="password" name="password" placeholder="Password" value="" />
+        <input type="submit" class="btn btn-md btn-color-b form-full" value="Sign In" />
+        <a>New Customer?</a>
+    </div>
+    <ul>
+        <li><a target="_blank" href="index.html">Main Demo Page</a></li>
+        <li><a href="home.html">Home Default</a></li>
+        <li><a href="portfolio-grid-2col.html">Portfolio</a></li>
+        <li><a href="login-register.html">Login & Signup</a></li>
+        <li><a href="faq-1.html">FAQ</a></li>
+        <li><a href="about-1.html">About</a></li>
+        <li><a href="service-1.html">Service</a></li>
+        <li><a href="blog-grid-3col.html">Blog</a></li>
+        <li><a href="404-error-1.html">404 Error</a></li>
+        <li><a href="shop-checkout.html">Shopping Cart</a></li>
+        <li><a href="contact-1.html">Contact Us</a></li>
+    </ul>
+</section>
+<!--End Sidemenu -->
+
+<!-- Search menu Top -->
+<section class=" top-search-bar cbp-spmenu cbp-spmenu-horizontal cbp-spmenu-top">
+    <div class="container">
+        <div class="search-wraper">
+            <form action="" method="get">
+                <input value="{{ app.session.get('keyword') }}" type="text" class="input-sm form-full search" placeholder="Search a post..." name="q" />
+                <a class="search-bar-icon"><i class="fa fa-search"></i></a>
+                <a class="bar-close toggle-menu menu-top push-body"><i class="ion ion-android-close"></i></a>
+            </form>
+
+        </div>
+    </div>
+</section>
+<!--End Search menu Top -->
+
+<!-- Site Wraper -->
+<div class="wrapper">
+
+    <!-- HEADER -->
+    <header class="header">
+        <div class="container">
+
+            <!-- logo -->
+            <div class="logo">
+                <a href="home.html">
+                  <i class="fa fa-search"></i> Search
+                </a>
+            </div>
+            <!--End logo-->
+
+            <!-- Rightside Menu (Search, Cart, Bart icon) -->
+            <div class="side-menu-btn">
+                <ul>
+                    <!-- Search Icon -->
+                    <li class="">
+                        <a class="right-icon search toggle-menu menu-top push-body"><i class="fa fa-search"></i></a>
+                    </li>
+                    <!-- End Search Icon -->
+
+                    <!-- Cart Icon -->
+                    <li class="">
+                        <a href="shop-checkout.html" class="right-icon cart">
+                            <i class="fa fa-heart"></i>
+                            <span class="cart-notification">2</span>
+                        </a>
+                        <!-- Cart Dropdown List -->
+                        <div class="cart-dropdown">
+                            <ul class="cart-list">
+                                <li class="light-color">
+                                    <a class="close-cart-list"><i class="fa fa-times-circle"></i></a>
+                                    <div class="media">
+                                        <a class="pull-left">
+                                            <img src="img/product/02.jpg" alt="fashion" /></a>
+                                        <div class="media-body">
+                                            <h6><a>Fashion Model New /01</a></h6>
+                                            <p>$399.00</p>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="light-color">
+                                    <a class="close-cart-list"><i class="fa fa-times-circle"></i></a>
+                                    <div class="media">
+                                        <a class="pull-left">
+                                            <img src="img/product/06.jpg" alt="fashion" /></a>
+                                        <div class="media-body">
+                                            <h6><a>Fashion Model New /02</a></h6>
+                                            <p>$399.00</p>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                            <p class="cart-sub-totle"><span class="pull-left">Cart Subtotal</span><span class="pull-right totle"><strong>$798.00</strong></span></p>
+                            <div class="clearfix"></div>
+                            <div class="cart-checkout-btn">
+                                <a href="shop-checkout.html" class="btn btn-md btn-color-b form-full checkout">Checkout</a>
+                            </div>
+                        </div>
+                        <!-- End Cart Dropdown List -->
+                    </li>
+                    <!-- End Cart Icon -->
+
+                    <!--Sidebar Menu Icon-->
+                    <li class="">
+                        <a class="right-icon bar-icon toggle-menu menu-right push-body"><i class="fa fa-bars"></i></a>
+                    </li>
+                    <!-- End Sidebar Menu Icon-->
+                </ul>
+            </div>
+            <!-- End Rightside Menu -->
+
+            <!-- Navigation Menu -->
+            <nav class='navigation'>
+                <ul>
+                    <li>
+                        <a href="home.html">Home</a>
+                        <!-- Nav Dropdown -->
+                    </li>
+
+                    <li>
+                        <a href="home.html">All posts</a>
+                        <!-- Nav Dropdown -->
+                    </li>
+
+                    <li>
+                        <a href="home.html">In this moment as Paris</a>
+                        <!-- Nav Dropdown -->
+                    </li>
+
+
+                    <li>
+                        <a href="home.html">Contact</a>
+                        <!-- Nav Dropdown -->
+                    </li>
+
+                    <li>
+                        <a href="home.html">About</a>
+                        <!-- Nav Dropdown -->
+                    </li>
+
+                </ul>
+            </nav>
+            <!--End Navigation Menu -->
+
+        </div>
+    </header>
+    <!-- END HEADER -->
+
+    <!-- CONTENT --------------------------------------------------------------------------------->
+
+    <!-- Intro Section -->
+
+    <section class="inner-intro bg-alpha overlay-dark light-color parallax parallax-background2">
+        <div class="container">
+            <div class="row title">
+                <h2 class="h2">Search posts everywhere</h2>
+                <div class="page-breadcrumb">
+                    <a>ElasticSearch</a>/<a>Silex</a>/<a>MongoDB</a>/<a>Redis</a>/<a>Node</a>
+                </div>
+
+            </div>
+        </div>
+    </section>
+    <div class="clearfix"></div>
+    <!-- End Intro Section -->
+
+    <!-- Blog Post Section -->
+    <section class="ptb ptb-sm-80">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3 col-sm-4 mt-xs-30">
+
+                    <!-- Price Filter -->
+                    <div class="sidebar-widget">
+                        <h5>Filtrer par âge</h5>
+                        <hr />
+                        <div id="range-slider" class="mtb-25"></div>
+                        <p class="">
+                            <form action="" method="get">
+                                <label for="price-amount"><span class="price-amount-from"></span>- <span class="price-amount-to"></span></label>
+                                <input type="hidden" name="minage" id="minage" value="{{ app.request.get('minage')|default(0) }}">
+                                <input type="hidden" name="maxage" id="maxage" value="{{ app.request.get('maxage')|default(99) }}">
+                                <button name="age" value="" type="submit" class="btn btn-xs btn-black pull-right">Filter</button>
+                            </form>
+                        </p>
+                    </div>
+                    <!-- End Price Filter -->
+
+                    <div class="sidebar-widget">
+                        {% for key,facet in facets %}
+                            <ul>
+                                <li><h4><a href="?q={{ key }}">{{ key }}({{ facet.total }})</a></h4></li>
+                                <ul>
+                                    {% for key,term in facet.terms %}
+                                        <li><a href="?q={{ term.term }}">{{ term.term }}({{ term.count }})</a></li>
+                                    {% endfor %}
+                                </ul>
+                        {% endfor %}
+                    </div>
+                    <!-- Shop Categories -->
+                    <div class="sidebar-widget">
+                        <h5>Product Categories</h5>
+                        <hr />
+                        <ul>
+                            <li><a>Photography</a></li>
+                            <li><a>Web Design</a></li>
+                            <li><a>Lifestyle</a></li>
+                            <li><a>Responsive</a></li>
+                            <li><a>MultiPurpose Theme</a></li>
+                            <li><a>Agency</a></li>
+                            <li><a>Portfolio</a></li>
+                        </ul>
+                    </div>
+                    <!-- End Shop Categories -->
+
+                    <!-- New Product -->
+                    <div class="sidebar-widget">
+                        <h5>New Product</h5>
+                        <hr />
+                        <ul class="widget-post">
+                            <li>
+                                <a class="widget-post-media">
+                                    <img src="img/product/08.jpg" />
+                                </a>
+                                <div class="widget-post-info">
+                                    <h6><a>veritatis et quasi architecto</a></h6>
+                                    <p><del>$499.00</del><span>$399.00</span></p>
+                                </div>
+                            </li>
+                            <li>
+                                <a class="widget-post-media">
+                                    <img src="img/product/08.jpg" />
+                                </a>
+                                <div class="widget-post-info">
+                                    <h6><a>Sed fringilla mauris</a></h6>
+                                    <p><span>$399.00</span></p>
+                                </div>
+                            </li>
+                            <li>
+                                <a class="widget-post-media">
+                                    <img src="img/product/08.jpg" />
+                                </a>
+                                <div class="widget-post-info">
+                                    <h6><a>harum quidem rerum</a></h6>
+                                    <p><span>$399.00</span></p>
+                                </div>
+                            </li>
+
+                        </ul>
+                    </div>
+                    <!-- End Shop Categories -->
+
+                    <!-- Tags -->
+                    <div class="sidebar-widget">
+                        <h5>popular Tags</h5>
+                        <hr />
+                        <ul class="widget-tag">
+                            <li><a>Art</a></li>
+                            <li><a>Business</a></li>
+                            <li><a>Design</a></li>
+                            <li><a>Graphic</a></li>
+                            <li><a>fashion</a></li>
+                            <li><a>Model</a></li>
+                            <li><a>Photography</a></li>
+                        </ul>
+                    </div>
+                    <!-- End Shop Categories -->
+
+                </div>
+
+
+                <div class="col-md-9 col-sm-8 mt-xs-30">
+
+
+                <div class="row text-center">
+
+                    <form class="form-inline" role="form" id="yourformID-form" action="" method="get">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="fa fa-search"></i></span>
+                            <input id="search" value="{{ app.session.get('keyword') }}" placeholder="Search a post..." required size="150" maxlength="50" class="form-control input-lg" name="q" type="text">
+                        </div>
+                        <div class="row">
+                            <select class="form-control pull-right" name="display">
+                                <option {% if app.request.get('display') == 5 %}selected{% endif %} value="6">Nb. affichage</option>
+                                <option {% if app.request.get('display') == 5 %}selected{% endif %} value="6">6 posts</option>
+                                <option {% if app.request.get('display') == 12 %}selected{% endif %} value="12">12 posts</option>
+                                <option {% if app.request.get('display') == 30 %}selected{% endif %} value="30">30 posts</option>
+                                <option {% if app.request.get('display') == 600 %}selected{% endif %} value="600">600 posts</option>
+                            </select>
+                        </div>
+                    </form>
+
+
+
+                <a href="" class="btn btn-primary btn-lg text-center" data-toggle="modal" data-target="#myModal"><i class="fa fa-plus"></i> Ajouter un post</a>
+                <!-- Modal -->
+                <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                <h4 class="modal-title" id="myModalLabel">Ajouter un post</h4>
+                            </div>
+                            <form class="form-horizontal" method="post" action="{{ path('create') }}">
+                            <div class="modal-body" style="overflow: auto;height: 500px;">
+                                <div class="form-group">
+                                    <label for="title" class="col-sm-2 control-label">Firstname</label>
+                                    <div class="col-sm-10">
+                                        {{ form_widget(form.firstname) }}
+                                        {{ form_errors(form.firstname) }}
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="title" class="col-sm-2 control-label">Lastname</label>
+                                    <div class="col-sm-10">
+                                        {{ form_widget(form.lastname) }}
+                                        {{ form_errors(form.lastname) }}
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="title" class="col-sm-2 control-label">Age</label>
+                                    <div class="col-sm-10">
+                                        {{ form_widget(form.age) }}
+                                        {{ form_errors(form.age) }}
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="title" class="col-sm-2 control-label">Team</label>
+                                    <div class="col-sm-10">
+                                        {{ form_widget(form.homeTeam) }}
+                                        {{ form_errors(form.homeTeam) }}
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="title" class="col-sm-2 control-label">Image</label>
+                                    <div class="col-sm-10">
+                                        {{ form_widget(form.image) }}
+                                        {{ form_errors(form.image) }}
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="title" class="col-sm-2 control-label">Tags</label>
+                                    <div class="col-sm-10">
+                                        {{ form_widget(form.tags) }}
+                                        {{ form_errors(form.tags) }}
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="title" class="col-sm-2 control-label">Phone</label>
+                                    <div class="col-sm-10">
+                                        {{ form_widget(form.phoneNumber) }}
+                                        {{ form_errors(form.phoneNumber) }}
+                                    </div>
+                                </div>
+                                    <div class="form-group">
+                                        <label for="title" class="col-sm-2 control-label">Title</label>
+                                        <div class="col-sm-10">
+                                            {{ form_widget(form.title) }}
+                                            {{ form_errors(form.title) }}
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="description" class="col-sm-2 control-label">Description</label>
+                                        <div class="col-sm-10">
+                                            {{ form_widget(form.description) }}
+                                            {{ form_errors(form.description) }}
+                                        </div>
+                                    </div>
+                                <div class="form-group">
+                                    <label for="visible" class="col-sm-2 control-label">Visible</label>
+                                    <div class="col-sm-10">
+                                        {{ form_widget(form.visible) }}
+                                        {{ form_errors(form.visible) }}
+                                    </div>
+                                </div>
+                                    <div class="form-group">
+                                        <label for="inputEmail3" class="col-sm-2 control-label">Email</label>
+                                        <div class="col-sm-10">
+                                            {{ form_widget(form.email) }}
+                                            {{ form_errors(form.email) }}                                        </div>
+                                    </div> <div class="form-group">
+                                        <label for="Information" class="col-sm-2 control-label">Information</label>
+                                        <div class="col-sm-10">
+                                            <textarea type="email" class="form-control" id="Information" placeholder="Information"></textarea>
+                                        </div>
+                                    </div>
+
+                            </div>
+                            <div class="modal-footer">
+                                <button type="submit" class="btn btn-md btn-black form-full">Ajouter ce post</button>
+                            </div>
+
+                                {{ form_row(form._token) }}
+
+                            </form>
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <hr />
+
+            <div class="row">
+                <p class="pull-right"><strong><span class="badge badge-info">{{ nb|default(0) }}</span>  </strong> résultats trouvés</p>
+            </div>
+            <!-- Post Item -->
+            <div class="row masonry">
+                {% for post in posts %}
+                    {% set post = post._source%}
+
+                    {#{{ dump(post) }}#}
+                    <div class="col-md-12 col-sm-12 col-xs-12 nf-item spacing-grid">
+                        <div class="blog-post">
+                            <div class="post-media">
+                                <img style="max-height: 250px;" class="img-responsive img-thumbnail item-container" src="{{ post.thumbnail.hqDefault }} " alt="1" />
+                            </div>
+                            <div class="post-meta"><span>by <a>{{ post.firstName }} {{ post.lastName }} <b>({{ post.age }} ans)</b></a>,</span> <span>{{ post.created_time|date("d/m/Y") }}</span>
+                            <br />
+                            <i class="text-right">{{ post.address.streetAddress }}
+                            {{ post.address.postalCode }} {{ post.address.city }} -{{ post.address.state }}</i>
+
+                            </div>
+
+                            <div class="post-header">
+                                <h5><a href="{{ path('view', {'id': post._id}) }}">{{ post.title }}</a></h5>
+                            </div>
+                            <div class="post-entry">
+                                <p>{{ post.description }}</p>
+                            </div>
+
+                            {% for tag in post.tags %}
+                                <span class="badge badge-info">{{ tag }}</span>
+                            {% endfor %}
+                            <div class="post-more-link pull-right"><a href="{{ path('view', {'id': post._id}) }}">Read More<i class="fa fa-long-arrow-right right"></i></a></div>
+                        </div>
+                    </div>
+                {% else %}
+                    <div class="alert alert-warning alert-block">
+                        <b><span class="fa fa-warning"></span>0</b> résultat trouvé
+                    </div>
+                {% endfor %}
+
+
+
+            </div>
+            <!-- End Post Item -->
+
+            <!-- Pagination Nav -->
+            {#<div class="pagination-nav mt-60 mt-xs-30">#}
+                {#<ul>#}
+                    {#<li><a href="#"><i class="fa fa-angle-left"></i></a></li>#}
+                    {#<li class="active"><a href="#">1</a></li>#}
+                    {#<li><a href="#">2</a></li>#}
+                    {#<li><a href="#">3</a></li>#}
+                    {#<li><a href="#"><i class="fa fa-angle-right"></i></a></li>#}
+                {#</ul>#}
+            {#</div>#}
+            <!-- End Pagination Nav -->
+        </div>
+    </section>
+    </div>
+    <!-- End Blog Post Section -->
+
+    <!-- End CONTENT ------------------------------------------------------------------------------>
+
+    <!-- FOOTER -->
+    <footer class="footer pt-80">
+        <div class="container">
+            <div class="row mb-60">
+                <!-- Logo -->
+                <div class="col-md-3 col-sm-3 col-xs-12 mb-xs-30">
+                    <a class="footer-logo" href="home.html">
+                        <img src="img/logo-black.png" /></a>
+                </div>
+                <!-- Logo -->
+
+                <!-- Newsletter -->
+                <div class="col-md-4 col-sm-5 col-xs-12 mb-xs-30">
+                    <div class="newsletter">
+                        <form>
+                            <input type="email" class="newsletter-input input-md newsletter-input mb-0" placeholder="Enter Your Email">
+                            <button class="newsletter-btn btn btn-xs btn-white" type="submit" value=""><i class="fa fa-angle-right mr-0"></i></button>
+                        </form>
+                    </div>
+                </div>
+                <!-- End Newsletter -->
+
+                <!-- Social -->
+                <div class="col-md-3 col-md-offset-2 col-sm-4 col-xs-12">
+                    <ul class="social">
+                        <li><a target="_blank" href="https://www.twitter.com/"><i class="fa fa-twitter"></i></a></li>
+                        <li><a target="_blank" href="https://instagram.com/"><i class="fa fa-instagram"></i></a></li>
+                        <li><a target="_blank" href="https://www.facebook.com/"><i class="fa fa-facebook"></i></a></li>
+                        <li><a target="_blank" href="https://vimeo.com/"><i class="fa fa-vimeo-square"></i></a></li>
+                        <li><a target="_blank" href="https://www.behance.net/"><i class="fa fa-behance"></i></a></li>
+                    </ul>
+                </div>
+                <!-- End Social -->
+            </div>
+            <!--Footer Info -->
+            <div class="row footer-info mb-60">
+                <div class="col-md-3 col-sm-12 col-xs-12 mb-sm-30">
+                    <p class="mb-xs-0">Our ante tincidunt tempus, Donec vitae sapien ut libero venenatis faucibus. Nullam quis ante. Etiam sit amet orci eget eros.</p>
+                    <a class="btn-link-a" href="about-1.html">Read More</a>
+                </div>
+                <div class="col-md-3 col-sm-6 col-xs-12 mb-sm-30 mb-xs-0">
+                    <ul class="link">
+                        <li><a href="blog-grid-3col.html">Blog</a></li>
+                        <li><a href="portfolio-grid-3col.html">Portfolio</a></li>
+                        <li><a href="login-register.html">Login & Signup</a></li>
+                        <li><a href="faq-1.html">FAQ</a></li>
+                        <li><a href="about-1.html">About</a></li>
+                        <li><a href="service-1.html">Service</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3 col-sm-6 col-xs-12 mb-sm-30">
+                    <ul class="link">
+                        <li><a href="contact-1.html">Contact Us</a></li>
+                        <li><a href="shop-checkout.html">Shopping Cart</a></li>
+                        <li><a href="404-error-1.html">404 Error</a></li>
+                        <li><a href="home.html">Home</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3 col-sm-12 col-xs-12">
+                    <p>502, DieSachbearbeiter, Schönhauser Allee, 167c10435 Berlin,Germany.</p>
+                    <ul class="link-small">
+                        <li><a href="mailto:yourname@domain.com"><i class="fa fa-envelope-o left"></i>yourname@domain.com</a></li>
+                        <li><a><i class="fa fa-phone left"></i>+40 (0) 012 345 6789</a></li>
+                    </ul>
+                </div>
+            </div>
+            <!-- End Footer Info -->
+        </div>
+
+        <hr />
+
+        <!-- Copyright Bar -->
+        <section class="copyright ptb-60">
+            <div class="container">
+                <p class="">
+                    © 2015 <a><b>Mazel Template</b></a>. All Rights Reserved.
+                    <br />
+                    Template  by <a target="_blank" href="http://nileforest.com/"><b>nileforest</b></a>
+                </p>
+            </div>
+        </section>
+        <!-- End Copyright Bar -->
+
+    </footer>
+    <!-- END FOOTER -->
+
+    <!-- Scroll Top -->
+    <a class="scroll-top">
+        <i class="fa fa-angle-double-up"></i>
+    </a>
+    <!-- End Scroll Top -->
+
+</div>
+<!-- Site Wraper End -->
+
+
+<!-- JS -->
+
+<script src="{{ asset('js/jquery-1.11.2.min.js') }}" type="text/javascript"></script>
+<script src="{{ asset('js//jquery-ui.min.js') }}" type="text/javascript"></script>
+<script type="application/javascript">
+    $('#search').autocomplete({
+        source : function(requete, reponse){ // les deux arguments représentent les données nécessaires au plugin
+            $.ajax({
+                url : '{{ path('homepage') }}', // on appelle le script JSON
+                dataType : 'json', // on spécifie bien que le type de données est en JSON
+                minLength: 4,
+                data : {
+                    q : $('#search').val() // on donne la chaîne de caractère tapée dans le champ de recherche
+                },
+                success : function(data){
+                    console.log(data);
+                    reponse($.map(data, function(objet){
+                        console.log(objet);
+                        return objet.title;
+                    }));
+                }
+            });
+        }
+    });
+</script>
+<script src="{{ asset('js/plugin/jquery.easing.js') }}" type="text/javascript"></script>
+<script src="{{ asset('js/bootstrap.min.js') }}" type="text/javascript"></script>
+<script src="{{ asset('js/plugin/jquery.flexslider.js') }}" type="text/javascript"></script>
+<script src="{{ asset('js/plugin/background-check.min.js') }}" type="text/javascript"></script>
+<script src="{{ asset('js/plugin/jquery.fitvids.js') }}" type="text/javascript"></script>
+<script src="{{ asset('js/plugin/jquery.viewportchecker.js') }}" type="text/javascript"></script>
+<script src="{{ asset('js/plugin/jquery.stellar.min.js') }}" type="text/javascript"></script>
+<script src="{{ asset('js/plugin/wow.min.js') }}" type="text/javascript"></script>
+<script src="{{ asset('js/plugin/jquery.colorbox-min.js') }}" type="text/javascript"></script>
+<script src="{{ asset('js/plugin/owl.carousel.min.js') }}" type="text/javascript"></script>
+<script src="{{ asset('js/plugin/isotope.pkgd.min.js') }}" type="text/javascript"></script>
+<script src="{{ asset('js/plugin/masonry.pkgd.min.js') }}" type="text/javascript"></script>
+<script src="{{ asset('js/plugin/imagesloaded.pkgd.min.js') }}" type="text/javascript"></script>
+<script src="{{ asset('js/plugin/jPushMenu.js') }}" type="text/javascript"></script>
+<script src="{{ asset('js/plugin/jquery.fs.tipper.min.js') }}" type="text/javascript"></script>
+<script src="{{ asset('js/plugin/mediaelement-and-player.min.js') }}"></script>
+<script src="{{ asset('js/theme.js') }}" type="text/javascript"></script>
+<script src="{{ asset('js/navigation.js') }}" type="text/javascript"></script>
+
+
+
+
+</body>
+</html>
